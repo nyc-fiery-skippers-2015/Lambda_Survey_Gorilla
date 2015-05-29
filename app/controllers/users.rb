@@ -13,8 +13,9 @@ end
 
 get '/users/:id' do
   cur_user = User.find_by(id: params[:id])
+  user_surveys = cur_user.created_surveys
   return [500, "User does not exist"] unless cur_user
-  erb :'/users/show', locals:{user: cur_user}
+  erb :'/users/show', locals:{user: cur_user, surveys: user_surveys}
 end
 
 get '/users/:id/edit' do
