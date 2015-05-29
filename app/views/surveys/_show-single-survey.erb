@@ -1,12 +1,11 @@
-<div class='sinlge-survey'>
-  <h2> survey.title </h2>
-
+<div class='single-survey'>
+  <div> <%= survey.title %> </div>
   <% if survey.questions %>
     <% survey.questions.each do |q|  %>
-      <%= erb :'questions/_show-single-questions', locals: {question: q}  %>
+      <%= erb :'questions/_show-single-questions', locals: {question: q, survey: survey}  %>
     <% end %>
   <% end %>
-
+  <div><a href="/surveys/<%= survey.id %>/questions/new">Add new question</a></div>
   <br>
   <br>
   <br>
