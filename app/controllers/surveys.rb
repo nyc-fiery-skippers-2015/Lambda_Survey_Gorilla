@@ -4,11 +4,14 @@ get '/surveys/all' do
 end
 
 get '/surveys/:id' do
+  require_logged_in
   cur_survey = Survey.find_by(id: params[:id])
-  erb :'surveys/_single-survey', locals: {survey: cur_survey}
+  return [500, 'sorry no matching survey was found'] unless cur_survey
+  erb :'surveys/_show-single-survey', locals: {survey: cur_survey}
 end
 
 get '/surveys/new' do
+  require_logged_in
   erb :'surveys/new'
 end
 
@@ -22,17 +25,23 @@ end
 get '/surveys/:id/edit'
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
-  erb :'surveys/edit', locals: {survey: cur_survey}
+  if session[:user_id] == cur_survey.creator.id
+    erb :'surveys/edit', locals: {survey: cur_survey}
+  else
+    redirect "/surveys/#{cur_survey.id}"
+  end
 end
 
 put '/surveys/:id'
-cur_survey = Survey.find_by(id: params[:id])
+  cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
+  cur_survey.update(params[:survey])
   redirect '/surveys/#{cur_survey.id}'
 end
 
 delete '/surveys/:id'
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
+  cur_survey.destroy
   redirect '/surveys/#{cur_survey.id}'
 end
