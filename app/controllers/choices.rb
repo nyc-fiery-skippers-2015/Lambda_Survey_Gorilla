@@ -1,20 +1,23 @@
 get '/surveys/:id/questions/:question_id/choices/new' do
-  erb :'/choices/new'
+  current_survey = Survey.find_by(id: params[:id])
+  current_question = Question.find_by(id: params[:question_id])
+  erb :'/choices/new', locals:{survey: current_survey, question: current_question}
 end
 
-post '/surveys/:id/questions/:question_id/choices/' do
-  new_choice = Choice.new(params[:choice])
-  return [500, 'Invalid Choice'] unless current_choice.save
+post '/surveys/:id/questions/:question_id/choices' do
+  user_input = params[:choice]
+  new_choice = Choice.new(choice: user_input[:choice], question_id: params[:question_id])
+  return [500, 'Invalid Choice'] unless new_choice.save
   current_question = Question.find_by(id: params[:question_id])
-  current_question.choices << current_choice
-  redirect '/surveys/:id/questions/:question_id/choices'
+  current_question.choices << new_choice
+  redirect "/surveys/#{}/questions/:question_id/choices"
 end
 
 get '/surveys/:id/questions/:question_id/choices/choice_id' do
   current_choice = Choice.find_by(id: params[:choice_id])
   current_survey = Survey.find_by(id: params[:id])
   current_question = Question.find_by(id: params[:question_id])
-  erb :'/choices/show' locals: {choice: current_choice, survey: current_survey, question: current_question}
+  erb :'/choices/show', locals: {choice: current_choice, survey: current_survey, question: current_question}
 end
 
 get '/surveys/:id/questions/:question_id/choices/choice_id/edit' do
@@ -30,7 +33,7 @@ put '/surveys/:id/questions/:question_id/choices' do
   current_survey = Survey.find_by(id: params[:id])
   current_question = Question.find_by(id: params[:question_id])
   return [500, 'Invalid Choice'] unless current_choice
-  current_choice.update(user_input[:choice])
+  current_choice.update(user_input)
   redirect "/surveys/#{current_survey.id}/questions/#{current_question.id}/choices/#{current_choice.id}"
 end
 
