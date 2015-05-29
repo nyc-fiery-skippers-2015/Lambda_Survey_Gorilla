@@ -5,6 +5,8 @@ end
 post '/surveys/:id/questions/:question_id/choices/' do
   new_choice = Choice.new(params[:choice])
   return [500, 'Invalid Choice'] unless current_choice.save
+  current_question = Question.find_by(id: params[:question_id])
+  current_question.choices << current_choice
   redirect '/surveys/:id/questions/:question_id/choices'
 end
 
