@@ -1,5 +1,182 @@
-/* CSS declarations go here */
-body {font-family: Vollkorn; font-size: 160%; line-height: 160%; }
+/*----------------------------------------General*/
+h1 {font-size: 1.8em;}
+h2 {font-size: 1.6em;}
+h3 {font-size: 1.4em;}
+h4 {font-size: 1.3em;}
+h5 {font-size: 1.2em;}
+h6 {font-size: 1.1em;}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    font-family: Vollkorn; line-height: 160%;
+}
+
+
+.inner-header,
+.inner-main,
+.inner-footer {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+}
+
+header, .main, footer {
+    display: flex;
+}
+
+form,input {
+    display: block;
+}
+
+form {
+    margin-top: 50px;
+}
+input {
+    padding: 8px;
+    margin: 6px;
+}
+input[type="text"],
+input[type="password"],
+input[type="submit"]  {
+    font-size: 14px;
+}
+
+
+/*----------------------------------------Header*/
+
+header {
+    flex-direction: column;
+    justify-content: center;
+
+    height: 50px;
+    background-color: #4477aa;
+    color: white;
+}
+
+.inner-header {
+    justify-content: space-between;
+    color: white;
+}
+
+.header-main-functionality {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+.header-main-functionality a {
+    margin: 0 8px;
+}
+
+.login-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+.login-toolbar a {
+    margin: 0 8px;
+}
+
+header a {
+    color: white;
+    padding: 1px 4px;
+    padding-top: 5px;
+    text-decoration: none;
+    border: 1px solid white;
+}
+
+header a:hover {
+    color: black;
+    padding: 1px 4px;
+    padding-top: 5px;
+    text-decoration: none;
+    border: 1px solid black
+}
+
+
+.header-btn {
+
+}
+
+/*----------------------------------------main*/
+
+.main {
+    flex-grow: 1;
+    flex-direction: column;
+
+    background-color: #eeeeee;
+
+}
+.inner-main {
+    display:flex;
+    flex-grow: 1;
+    justify-content: center;
+
+
+    background-color: #dddddd;
+    background-color: #dddddd;
+    height: 100%;
+}
+
+.welcome-page {
+    margin-top: 150px;
+
+}
+
+.inner-main {
+
+}
+
+
+
+/*----------------------------------------footer*/
+
+footer {
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: #4477aa;
+    height: 40px;
+}
+
+.inner-footer {
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*body {font-family: Vollkorn; font-size: 160%; line-height: 160%; }
 h1, h2, h3, h4, h5, h6 {font-family: Georgia; line-height:100%; margin-top: 0.5em; margin-bottom: 0.5em; color: #36AECC; font-style: italic; font-weight: 400;}
 h1 {font-size: 1.8em;}
 h2 {font-size: 1.6em;}
@@ -65,3 +242,4 @@ code {
     margin-left: -1em;
     overflow: auto;
 }
+*/
