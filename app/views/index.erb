@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Welcome to Survey Gorilla, Lambda Edition!</h1>
+  <form action="/login">
+    <input type="submit" value="Login">
+  </form>
+  <form action="/users/new">
+    <input type="submit" value="Create Account">
+  </form>
+  <% if session[:user_id] %>
+    <form action="/logout">
+      <input type="submit" value="Logout">
+    </form>
+  <%end  %>
+</div>
