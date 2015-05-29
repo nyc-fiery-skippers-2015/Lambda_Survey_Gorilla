@@ -20,17 +20,20 @@
   <title></title>
 </head>
 <body>
-<div id="content">
   <header>
-    <a href="/"><img src="/img/zenchinese.png" class="logo"></a>
-    <div id="login-toolbar">
-      <% if current_user %>
-        <a href="/logout">Logout</a>
-      <% else %>
-        <a href="/login">Login</a>
-      <% end %>
+    <div class='inner-header'>
+     <%= erb :'_header' %>
+    </div>
   </header>
-  <%= yield %>
-</div>
+  <div class="main">
+    <div class="inner-main">
+      <%= yield %>
+    </div>
+  </div>
+  <footer>
+    <div class="inner-footer">
+      <h3>Thats the FOOTER</h3>
+    </div>
+  </footer>
 </body>
 </html>

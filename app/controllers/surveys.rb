@@ -22,7 +22,7 @@ post '/surveys/new' do
   redirect '/surveys/#{new_survey.id}'
 end
 
-get '/surveys/:id/edit'
+get '/surveys/:id/edit' do
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
   if session[:user_id] == cur_survey.creator.id
@@ -32,14 +32,14 @@ get '/surveys/:id/edit'
   end
 end
 
-put '/surveys/:id'
+put '/surveys/:id' do
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
   cur_survey.update(params[:survey])
   redirect '/surveys/#{cur_survey.id}'
 end
 
-delete '/surveys/:id'
+delete '/surveys/:id' do
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
   cur_survey.destroy

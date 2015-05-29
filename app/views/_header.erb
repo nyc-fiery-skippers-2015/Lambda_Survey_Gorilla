@@ -1,0 +1,16 @@
+<div class="header-main-functionality">
+  <a href="/surveys/all">Show </a>
+  <a href="/surveys/new">Create </a>
+  <a href="---------------">Answer</a>
+</div>
+
+<div class="login-toolbar">
+  <% if current_user %>
+    <a href="/logout"> Logout </a>
+    <a href="/users/<%= current_user.id%>"> My Profile</a>
+  <% else %>
+    <a href="/login">Login</a>
+    <a href="/users/new">Sign Up</a>
+  <% end %>
+</div>
+
