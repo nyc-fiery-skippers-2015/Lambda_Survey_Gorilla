@@ -1,4 +1,4 @@
-class ChoiceUser < ActiveRecord::Base
+class ChoicesUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :choice
 end
