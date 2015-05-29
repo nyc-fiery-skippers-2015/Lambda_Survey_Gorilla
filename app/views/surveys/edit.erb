@@ -1,0 +1,12 @@
+<div class="survey-edit">
+  <form action="/surveys/ <%= survey.id  %>" method='post'>
+    <input type='hidden' name='_method' value='put'>
+    <input type='text' name='survey[title]' value="<%= survey.title %>"/>
+    <input type='submit' name='edit your survey'/>
+  </form>
+
+  <form action="/surveys/#{survey.id}" method='post'>
+    <input type='hidden' name='_method' value='delete'/>
+    <input type='submit' name='delete your survey'/>
+  </form>
+</div>

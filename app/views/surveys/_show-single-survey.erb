@@ -1,0 +1,13 @@
+<div class='sinlge-survey'>
+  <h2> survey.title </h2>
+
+  <% if survey.questions %>
+    <% survey.questions.each do |q|  %>
+      <%= erb :'questions/_show-single-questions', locals: {question: q}  %>
+    <% end %>
+  <% end %>
+
+  <br>
+  <br>
+  <br>
+</div>

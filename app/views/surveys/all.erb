@@ -1,0 +1,5 @@
+<% if surveys %>
+  <% surveys.each do |s|  %>
+    <%= erb :'surveys/_show-single-survey', locals: {survey: s}  %>
+  <% end %>
+<% end %>
