@@ -1,11 +1,11 @@
 <div class='container'>
-  <form action='/surveys/<%=survey.id%>/questions/<%=question.id%>/choices' method='post'>
-    <input type='hidden' method='_method' value='put'/>
-    <input type='text' name='choice[choice]' value='<%choice.choice%>'/>
+  <form action='/surveys/<%=survey.id%>/questions/<%=question.id%>/choices/<%= choice.id %>' method='post'>
+    <input type='hidden' name='_method' value='put'/>
+    <input type='text' name='choice[choice]' value='<%=choice.choice%>'/>
     <input type ='submit' value='Update Choice'/>
   </form>
-  <form action='/surveys/<%=survey.id%>/questions/<%=question.id%>/choices' method='post'>
-    <input type='hidden' method='_method' value='delete'/>
+  <form action='/surveys/<%=survey.id%>/questions/<%=question.id%>/choices/<%= choice.id %>' method='post'>
+    <input type='hidden' name='_method' value='delete'/>
     <input type ='submit' value='Delete Choice'/>
   </form>
 </div>

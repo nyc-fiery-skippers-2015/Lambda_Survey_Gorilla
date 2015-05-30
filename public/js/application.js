@@ -1,6 +1,8 @@
 $(document).ready(function(){
   $('.add_question').on('click', getNewQuestion);
   $('.question').on('submit', '.new_question', addQuestion);
+  $('.add_choice').on('click', getNewChoice);
+  $('.choice').on('submit', '.new_choice', addChoice);
 });
 
 var getNewQuestion = function(event){
@@ -37,5 +39,40 @@ var addQuestion = function(event){
   }).fail(function(error){
     console.log(error);
   });
+};
 
+var getNewChoice = function(event){
+  event.preventDefault();
+  var $target = $(event.target);
+  var questionDiv = $target.closest('.single_question')
+  var questionId = questionDiv.attr('id')
+  var controller_route = $target.attr('href')
+  $.ajax({
+    url: controller_route,
+  }).done(function(response){
+    questionDiv.children('.choice').append(response)
+    questionDiv.find('.add_choice').toggle(false)
+  }).fail(function(error){
+    console.log(error);
+  });
+};
+
+var addChoice = function(event){
+  event.preventDefault();
+  var $target = $(event.target);
+  var questionDiv = $target.closest('.single_question')
+  var questionId = questionDiv.attr('id')
+  $.ajax({
+      method: 'post',
+      url: $target.attr('action'),
+      data: $target.serialize(),
+      dataType: 'json'
+  }).done(function(response){
+    var link = $target.attr('action') + '/' + response.id
+    $('<a href="'+ link + '">'+ response.choice + '</a>').appendTo($('.all_choices'));
+    $('.new_choice').toggle(false);
+    $('.add_choice').toggle(true);
+  }).fail(function(error){
+    console.log(error);
+  });
 };
