@@ -14,7 +14,7 @@ post '/surveys/:id/questions/:question_id/choices' do
   if request.xhr?
     return new_choice.to_json
   end
-  redirect "/surveys/#{current_survey.id}/questions/#{current_question.id}"
+  redirect "/surveys/#{current_survey.id}"
 end
 
 get '/surveys/:id/questions/:question_id/choices/:choice_id' do
