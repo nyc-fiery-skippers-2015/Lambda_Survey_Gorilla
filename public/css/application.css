@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
 
-    height: 100vh;
+    min-height: 100vh;
     font-family: Vollkorn; line-height: 160%;
 }
 
@@ -20,6 +20,7 @@ body {
 .inner-main,
 .inner-footer {
     width: 70%;
+    height: auto;
     margin: 0 auto;
     display: flex;
 }
@@ -108,12 +109,15 @@ header a:hover {
     flex-direction: column;
 
     background-color: #eeeeee;
+    color: black;
 
 }
 .inner-main {
     display:flex;
     flex-grow: 1;
     justify-content: center;
+
+    padding-bottom: 100px;
 
 
     background-color: #dddddd;
@@ -126,8 +130,53 @@ header a:hover {
 
 }
 
-.inner-main {
+.all-surveys, .single-survey {
+    margin-top: 100px;
 
+}
+
+
+.all-surveys h1, .single-survey h1 {
+    margin-bottom: 40px;
+    text-decoration: underline;
+}
+.all-surveys a {
+    display: block;
+    text-decoration: none;
+    padding: 8px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.all-surveys a:hover {
+    display: block;
+    color: white;
+}
+
+
+.add_question {
+    text-decoration: none;
+}
+
+.single-survey {
+    text-align: center;
+}
+
+.all_questions {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.all_questions ol {
+    list-style-type: decimal;
+}
+
+.single-question a {
+    text-decoration: none;
+}
+
+.single-question a {
+    text-decoration: none;
 }
 
 
@@ -149,11 +198,36 @@ footer {
 
 
 
+/*----------------------------------------buttons*/
 
 
 
+.btn {
+  background:  #4477aa;
+  background-image: -webkit-linear-gradient(top,  #4477aa, #2980b9);
+  background-image: -moz-linear-gradient(top,  #4477aa, #2980b9);
+  background-image: -ms-linear-gradient(top,  #4477aa, #2980b9);
+  background-image: -o-linear-gradient(top,  #4477aa, #2980b9);
+  background-image: linear-gradient(to bottom,  #4477aa, #2980b9);
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 8px 18px 8px 18px;
+  text-decoration: none;
+}
 
-
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
 
 
 

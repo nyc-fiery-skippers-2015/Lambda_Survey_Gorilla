@@ -1,5 +1,10 @@
-<% if surveys %>
-  <% surveys.each do |s|  %>
-    <a href="/surveys/<%= s.id %>"><%= s.title  %></a>
+<div class='all-surveys'>
+  <h1>All Surveys: </h1>
+  <ul>
+  <% if surveys %>
+    <% surveys.each do |s|  %>
+      <li><a href="/surveys/<%= s.id %>"><%= s.title  %></a></li>
+    <% end %>
   <% end %>
-<% end %>
+  </ul>
+</div>
