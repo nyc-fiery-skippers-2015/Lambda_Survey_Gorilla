@@ -52,7 +52,8 @@ var getNewChoice = function(event){
   $.ajax({
     url: controller_route,
   }).done(function(response){
-    $('#' + questionId).append(response)
+    var choiceId = '.choice_' + questionId
+    $(choiceId).append(response)
     $('.add_choice').toggle(false)
   }).fail(function(error){
     console.log(error);
@@ -71,7 +72,8 @@ var addChoice = function(event){
       dataType: 'json'
   }).done(function(response){
     var link = $target.attr('action') + '/' + response.id
-    $('<div><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($('#' + questionId));
+    var selectDiv = '.all_choices_' + questionId
+    $('<div><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($(selectDiv));
     $('.new_choice').toggle(false);
     $('.add_choice').toggle(true);
   }).fail(function(error){
