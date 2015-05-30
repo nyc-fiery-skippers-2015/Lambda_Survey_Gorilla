@@ -1,11 +1,19 @@
-<div class='single-question'>
+<div class='single_question' id='<%= question.id %>'>
   <div>
     <a href="/surveys/<%= survey.id %>/questions/<%= question.id %>"><%= question.body %></a>
   </div>
-  <% if question.choices %>
-    <% question.choices.each do |c|  %>
-      <%= erb :'choices/_show-single-choices', locals: {choice: c, survey: survey, question: question}  %>
+  <div class="all_choices_<%=question.id%>">
+    <% if question.choices %>
+      <% question.choices.each do |c|  %>
+        <%= erb :'choices/_show-single-choices', locals: {choice: c, survey: survey, question: question}  %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+  <div class="choice_<%= question.id %> choice">
+
+  </div>
+  <div>
+    <a class="add_choice" href="/surveys/<%= survey.id %>/questions/<%= question.id %>/choices/new">Add new answer</a>
+  </div>
   <br>
 </div>

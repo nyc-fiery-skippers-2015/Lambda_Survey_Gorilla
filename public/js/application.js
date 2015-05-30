@@ -34,6 +34,8 @@ var addQuestion = function(event){
   }).done(function(response){
     var link = '/surveys/' + surveyId + '/questions/' + response.id
     $('<a href="'+ link + '">'+ response.body + '</a>').appendTo($('.all_questions'));
+    var link2 = '<div><a class="add_choice" href="'+ $target.attr('action') + '">'+ 'Add new Answer' + '</a></div>'
+    $('.all_questions').append(link2)
     $('.new_question').toggle(false);
     $('.add_question').toggle(true);
   }).fail(function(error){
@@ -50,8 +52,9 @@ var getNewChoice = function(event){
   $.ajax({
     url: controller_route,
   }).done(function(response){
-    questionDiv.children('.choice').append(response)
-    questionDiv.find('.add_choice').toggle(false)
+    var choiceId = '.choice_' + questionId
+    $(choiceId).append(response)
+    $('.add_choice').toggle(false)
   }).fail(function(error){
     console.log(error);
   });
@@ -69,7 +72,8 @@ var addChoice = function(event){
       dataType: 'json'
   }).done(function(response){
     var link = $target.attr('action') + '/' + response.id
-    $('<div><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($('.all_choices'));
+    var selectDiv = '.all_choices_' + questionId
+    $('<div><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($(selectDiv));
     $('.new_choice').toggle(false);
     $('.add_choice').toggle(true);
   }).fail(function(error){
