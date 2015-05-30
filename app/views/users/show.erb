@@ -1,9 +1,11 @@
-<div class="container">
+<div class="account-info">
+  <h1>Account information:</h1>
   <div>Name: <%= user.name %></div>
   <div>Email: <%= user.email %></div>
   <br>
   <div><a href="/users/<%= user.id %>/edit">Edit Account</a></div>
   <br>
+  <h1>My surveys:</h1>
   <% if surveys %>
     <% surveys.each do |survey| %>
       <a href="/surveys/<%= survey.id %>"><%= survey.title %></a>
