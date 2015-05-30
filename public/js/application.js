@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $('.add_question').on('click', getNewQuestion);
   $('.question').on('submit', '.new_question', addQuestion);
-  $('.add_choice').on('click', getNewChoice);
+  $('.add_new_choice').on('click', getNewChoice);
   $('.choice').on('submit', '.new_choice', addChoice);
 });
 
@@ -34,7 +34,7 @@ var addQuestion = function(event){
   }).done(function(response){
     var link = '/surveys/' + surveyId + '/questions/' + response.id
     $('<a href="'+ link + '">'+ response.body + '</a>').appendTo($('.all_questions'));
-    var link2 = '<div><a class="add_choice" href="'+ $target.attr('action') + '">'+ 'Add new Answer' + '</a></div>'
+    var link2 = '<div><a class="add_choice" href="'+ '/surveys/' + surveyId + '/questions/' + response.id + '/choices/new' + '">'+ 'Add new Answer' + '</a></div>'
     $('.all_questions').append(link2)
     $('.new_question').toggle(false);
     $('.add_question').toggle(true);
