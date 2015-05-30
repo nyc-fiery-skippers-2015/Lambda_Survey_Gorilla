@@ -179,6 +179,12 @@ header a:hover {
     text-decoration: none;
 }
 
+.account-info {
+    margin-top: 80px;
+}
+.account-info h1{
+    margin-bottom: 15px;
+}
 
 
 /*----------------------------------------footer*/
