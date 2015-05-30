@@ -4,7 +4,7 @@
   </div>
   <% if question.choices %>
     <% question.choices.each do |c|  %>
-      <%= erb :'choices/_show-single-choices', locals: {choice: c}  %>
+      <%= erb :'choices/_show-single-choices', locals: {choice: c, survey: survey, question: question}  %>
     <% end %>
   <% end %>
 

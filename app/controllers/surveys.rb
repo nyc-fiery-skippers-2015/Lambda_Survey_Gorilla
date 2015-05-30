@@ -1,19 +1,11 @@
-get '/surveys/all' do
+get '/surveys' do
   all_surveys = Survey.all
   erb :'surveys/all', locals: {surveys: all_surveys}
 end
 
-
 get '/surveys/new' do
   require_logged_in
   erb :'surveys/new'
-end
-
-post '/surveys/new' do
-  new_survey = Survey.new(title: params[:survey][:title],
-                          creator_id: current_user.id)
-  return [500, 'sorry survey could not be created'] unless new_survey.save
-  redirect "/surveys/#{new_survey.id}"
 end
 
 get '/surveys/:id/edit' do
@@ -25,11 +17,28 @@ get '/surveys/:id/edit' do
     redirect "/surveys/#{cur_survey.id}"
   end
 end
+
 get '/surveys/:id' do
   require_logged_in
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey was found'] unless cur_survey
-  erb :'surveys/_show-single-survey', locals: {survey: cur_survey}
+  if cur_survey.creator_id == session[:user_id]
+    erb :'surveys/_show-single-survey', locals: {survey: cur_survey}
+  else
+    erb :'/surveys/take', locals:{survey: cur_survey}
+  end
+end
+
+post '/surveys/new' do
+  new_survey = Survey.new(title: params[:survey][:title],
+                          creator_id: current_user.id)
+  return [500, 'sorry survey could not be created'] unless new_survey.save
+  redirect "/surveys/#{new_survey.id}"
+end
+
+post '/surveys/:id/submit' do
+  cur_survey = Survey.find_by(id: params[:id])
+
 end
 
 put '/surveys/:id' do

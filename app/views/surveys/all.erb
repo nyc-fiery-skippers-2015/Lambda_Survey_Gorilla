@@ -1,5 +1,5 @@
 <% if surveys %>
   <% surveys.each do |s|  %>
-    <%= erb :'surveys/_show-single-survey', locals: {survey: s}  %>
+    <a href="/surveys/<%= s.id %>"><%= s.title  %></a>
   <% end %>
 <% end %>

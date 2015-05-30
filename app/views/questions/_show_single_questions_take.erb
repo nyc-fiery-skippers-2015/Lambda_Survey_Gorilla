@@ -1,0 +1,11 @@
+<div class='single-question'>
+  <div>
+    <%= question.body %>
+  </div>
+  <% if question.choices %>
+      <% question.choices.each do |c|  %>
+        <%= erb :'choices/_show_single_choices_take', locals: {choice: c, survey: survey, question: question}  %>
+      <% end %>
+  <% end %>
+  <br>
+</div>
