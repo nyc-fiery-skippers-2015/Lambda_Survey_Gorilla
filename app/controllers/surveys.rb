@@ -42,7 +42,6 @@ post '/surveys/:id/submit' do
   current_user.surveys << cur_survey
   array_choices = user_input.values.map{|hash| hash.values}.flatten
   array_choices = array_choices.map{|choice| Choice.find_by(choice: choice)}
-  # binding.pry
   array_choices.each{|choice| current_user.choices << choice}
   redirect "/surveys"
 end
