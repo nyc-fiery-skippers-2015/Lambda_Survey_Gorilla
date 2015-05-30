@@ -69,7 +69,7 @@ var addChoice = function(event){
       dataType: 'json'
   }).done(function(response){
     var link = $target.attr('action') + '/' + response.id
-    $('<a href="'+ link + '">'+ response.choice + '</a>').appendTo($('.all_choices'));
+    $('<div><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($('.all_choices'));
     $('.new_choice').toggle(false);
     $('.add_choice').toggle(true);
   }).fail(function(error){

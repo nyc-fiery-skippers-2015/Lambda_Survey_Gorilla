@@ -2,11 +2,14 @@
   <div> <%= survey.title %> </div>
   <div class="all_questions">
     <div>
-      <% if survey.questions %>
-        <% survey.questions.each do |q|  %>
-          <%= erb :'questions/_show_single_questions_take', locals: {question: q, survey: survey}  %>
+      <form action="/surveys/<%= survey.id %>/submit" method="post">
+        <% if survey.questions %>
+          <% survey.questions.each do |q|  %>
+            <%= erb :'questions/_show_single_questions_take', locals: {question: q, survey: survey}  %>
+          <% end %>
         <% end %>
-      <% end %>
+        <input type="submit" value="Submit Survey"/>
+      </form>
     </div>
   </div>
   <br>
