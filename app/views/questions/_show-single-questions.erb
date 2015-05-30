@@ -1,5 +1,7 @@
 <div class='single-question'>
-  <div> <a href="/surveys/<%= survey.id %>/questions/<%= question.id %>"><%= question.body %></a> </div>
+  <div>
+    <a href="/surveys/<%= survey.id %>/questions/<%= question.id %>"><%= question.body %></a>
+  </div>
   <% if question.choices %>
     <% question.choices.each do |c|  %>
       <%= erb :'choices/_show-single-choices', locals: {choice: c}  %>
