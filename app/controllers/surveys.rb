@@ -29,6 +29,12 @@ get '/surveys/:id' do
   end
 end
 
+get '/surveys/:id/results' do
+  cur_survey = Survey.find_by(id: params[:id])
+  questions = cur_survey.questions
+  erb :'/surveys/results', locals: {survey: cur_survey, questions: questions}
+end
+
 post '/surveys/new' do
   new_survey = Survey.new(title: params[:survey][:title],
                           creator_id: current_user.id)
@@ -40,10 +46,11 @@ post '/surveys/:id/submit' do
   cur_survey = Survey.find_by(id: params[:id])
   user_input = params[:choice]
   current_user.surveys << cur_survey
-  array_choices = user_input.values.map{|hash| hash.values}.flatten
-  array_choices = array_choices.map{|choice| Choice.find_by(choice: choice)}
-  array_choices.each{|choice| current_user.choices << choice}
-  redirect "/surveys"
+  # binding.pry
+  array_choices = []
+  user_input.each{|key, value| array_choices << Choice.where(choice: value, question_id: key)}
+  array_choices.flatten.each{|choice| current_user.choices << choice}
+  redirect "/surveys/#{cur_survey.id}/results"
 end
 
 put '/surveys/:id' do

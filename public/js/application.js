@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $('.add_question').on('click', getNewQuestion);
   $('.question').on('submit', '.new_question', addQuestion);
-  $('.add_new_choice').on('click', getNewChoice);
+  $('.add_new_choice').on('click', '.add_choice', getNewChoice);
   $('.choice').on('submit', '.new_choice', addChoice);
 });
 

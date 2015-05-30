@@ -1,0 +1,9 @@
+<div>
+  <div>This survey was taken <%= survey.taken_surveys.length %> times</div>
+  <% questions.each do |question| %>
+    <div><%= question.body %></div>
+    <% question.choices.each do |choice| %>
+      <div><%= choice.choice %>: <%= choice.choices_users.length %></div>
+    <% end %>
+  <% end %>
+</div>
