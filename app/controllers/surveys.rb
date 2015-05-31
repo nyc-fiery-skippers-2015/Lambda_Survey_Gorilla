@@ -57,12 +57,12 @@ put '/surveys/:id' do
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
   cur_survey.update(params[:survey])
-  redirect '/surveys/#{cur_survey.id}'
+  redirect "/surveys/#{cur_survey.id}"
 end
 
 delete '/surveys/:id' do
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
   cur_survey.destroy
-  redirect '/surveys/#{cur_survey.id}'
+  redirect "/surveys/#{cur_survey.id}"
 end

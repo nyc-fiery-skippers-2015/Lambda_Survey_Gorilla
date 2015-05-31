@@ -243,6 +243,12 @@ header a:hover {
     border: 2px solid orange;
     padding: 6px;
 }
+.edit_button {
+    color: orange;
+    border: 2px solid orange;
+    padding: 6px;
+    text-decoration: none;
+}
 .add_question:hover {
     color: white;
     border: 2px solid white;
