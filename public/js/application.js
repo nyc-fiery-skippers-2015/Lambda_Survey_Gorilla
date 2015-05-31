@@ -1,8 +1,8 @@
 $(document).ready(function(){
   $('.add_question').on('click', getNewQuestion);
   $('.question').on('submit', '.new_question', addQuestion);
-  $('.add_new_choice').on('click', '.add_choice', getNewChoice);
-  $('.choice').on('submit', '.new_choice', addChoice);
+  $('.all_questions').on('click', '.add_choice', getNewChoice);
+  $('.all_questions').on('submit', '.new_choice', addChoice);
 });
 
 var getNewQuestion = function(event){
@@ -45,15 +45,13 @@ var addQuestion = function(event){
 
 var getNewChoice = function(event){
   event.preventDefault();
-  var $target = $(event.target);
-  var questionDiv = $target.closest('.single_question')
-  var questionId = questionDiv.attr('id')
+  var $target = $(event.target)
+  var parentDiv = $target.closest('.all_questions')
   var controller_route = $target.attr('href')
   $.ajax({
     url: controller_route,
   }).done(function(response){
-    var choiceId = '.choice_' + questionId
-    $(choiceId).append(response)
+    $(parentDiv).append(response)
     $('.add_choice').toggle(false)
   }).fail(function(error){
     console.log(error);
@@ -63,8 +61,8 @@ var getNewChoice = function(event){
 var addChoice = function(event){
   event.preventDefault();
   var $target = $(event.target);
-  var questionDiv = $target.closest('.single_question')
-  var questionId = questionDiv.attr('id')
+  var parentDiv = $target.closest('.all_questions')
+  var link = parentDiv.attr('href')
   $.ajax({
       method: 'post',
       url: $target.attr('action'),
@@ -72,8 +70,8 @@ var addChoice = function(event){
       dataType: 'json'
   }).done(function(response){
     var link = $target.attr('action') + '/' + response.id
-    var selectDiv = '.all_choices_' + questionId
-    $('<div><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($(selectDiv));
+    // var selectDiv = '.all_choices_' + questionId
+    $('<div><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($(parentDiv));
     $('.new_choice').toggle(false);
     $('.add_choice').toggle(true);
   }).fail(function(error){
