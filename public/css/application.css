@@ -237,6 +237,15 @@ header a:hover {
 .edit_button:hover {
      border: 2px solid white;
 }
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    text-align: justify;
+    height: auto;
+    padding: 10px;
+    word-wrap: break-word;
+}
 
 .add_question:hover {
     color: white;
