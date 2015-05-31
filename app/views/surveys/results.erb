@@ -1,5 +1,6 @@
 <div>
   <div>This survey was taken <%= survey.taken_surveys.length %> times</div>
+  <br>
   <% questions.each do |question| %>
     <div><%= question.body %></div>
     <% question.choices.each do |choice| %>
@@ -8,5 +9,6 @@
         <div style="width: <%= 5*choice.choices_users.length%>px; height: 10px;  "></div>
       </div>
     <% end %>
+      <br>
   <% end %>
 </div>
