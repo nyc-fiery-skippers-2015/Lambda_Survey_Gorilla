@@ -113,8 +113,8 @@ var doEditQuestion = function(event){
       dataType: 'json'
   }).done(function(response){
     parentDiv.children('.question-body').html("Question: " + response.body)
-    parentDiv.children('.edit-question').toggle(true);
-    parentDiv.children('.edit_form').toggle(false);
+    parentDiv.find('.edit-question').toggle(true);
+    parentDiv.find('.edit_form').toggle(false);
   }).fail(function(error){
     console.log(error);
   });
@@ -148,8 +148,8 @@ var doEditChoice = function(event){
       dataType: 'json'
   }).done(function(response){
     parentDiv.children('.choice-body').html("Choice: " + response.choice)
-    parentDiv.children('.edit-choice').toggle(true);
-    parentDiv.children('.edit_form').toggle(false);
+    parentDiv.find('.edit-choice').toggle(true);
+    parentDiv.find('.edit_form').toggle(false);
   }).fail(function(error){
     console.log(error);
   });
