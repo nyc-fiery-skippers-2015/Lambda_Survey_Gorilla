@@ -25,7 +25,7 @@ end
 get '/surveys/:id/questions/:question_id/edit' do
   current_survey = Survey.find_by(id: params[:id])
   current_question = Question.find_by(id: params[:question_id])
-  erb :'/questions/edit', locals: {survey: current_survey, question: current_question}
+  erb :'/questions/edit', locals: {survey: current_survey, question: current_question}, layout: !request.xhr?
 end
 
 put '/surveys/:id/questions/:question_id' do
@@ -33,6 +33,9 @@ put '/surveys/:id/questions/:question_id' do
   current_question = Question.find_by(id: params[:question_id])
   return [500, 'Invalid Question'] unless current_question
   current_question.update(params[:question])
+  if request.xhr?
+    return current_question.to_json
+  end
   redirect "/surveys/#{current_survey.id}/questions/#{current_question.id}"
 end
 

@@ -4,6 +4,9 @@
     <div><%= question.body %></div>
     <% question.choices.each do |choice| %>
       <div><%= choice.choice %>: <%= choice.choices_users.length %></div>
+      <div class="chart">
+        <div style="width: <%= 5*choice.choices_users.length%>px; height: 10px;  "></div>
+      </div>
     <% end %>
   <% end %>
 </div>

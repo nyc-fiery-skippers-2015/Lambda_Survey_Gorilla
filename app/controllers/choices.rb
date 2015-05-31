@@ -28,7 +28,7 @@ get '/surveys/:id/questions/:question_id/choices/:choice_id/edit' do
   current_choice = Choice.find_by(id: params[:choice_id])
   current_survey = Survey.find_by(id: params[:id])
   current_question = Question.find_by(id: params[:question_id])
-  erb :'/choices/edit', locals: {choice: current_choice, survey: current_survey, question: current_question}
+  erb :'/choices/edit', locals: {choice: current_choice, survey: current_survey, question: current_question}, layout: !request.xhr?
 end
 
 put '/surveys/:id/questions/:question_id/choices/:choice_id' do
@@ -37,6 +37,9 @@ put '/surveys/:id/questions/:question_id/choices/:choice_id' do
   current_question = Question.find_by(id: params[:question_id])
   return [500, 'Invalid Choice'] unless current_choice
   current_choice.update(params[:choice])
+  if request.xhr?
+    return current_choice.to_json
+  end
   redirect "/surveys/#{current_survey.id}/questions/#{current_question.id}/choices/#{current_choice.id}"
 end
 

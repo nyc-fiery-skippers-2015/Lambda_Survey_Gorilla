@@ -1,5 +1,5 @@
-<div class='container'>
-  <form action='/surveys/<%=survey.id%>/questions/<%=question.id%>/choices/<%= choice.id %>' method='post'>
+<div class='container edit_form'>
+  <form class="submit-edit-choice" action='/surveys/<%=survey.id%>/questions/<%=question.id%>/choices/<%= choice.id %>' method='post'>
     <input type='hidden' name='_method' value='put'/>
     <input type='text' name='choice[choice]' value='<%=choice.choice%>'/>
     <input type ='submit' value='Update Choice'/>
