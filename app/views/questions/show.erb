@@ -1,6 +1,6 @@
 <div class='single_question' id='<%= question.id %>'>
-  <div>Question: <%=question.body%></div>
-  <div class="all_choices_<%=question.id%>">
+  <div class='question-body'>Question: <%=question.body%></div>
+  <div class="question-block" id="<%=question.id%>">
     <div>
       <% if choices %>
         <% choices.each do |c| %>
@@ -9,15 +9,7 @@
       <% end %>
     </div>
   </div>
-  <div><a href ="/surveys/<%=survey.id%>/questions/<%=question.id%>/edit">Edit Question</a></div>
+  <div><a class="edit-question" href ="/surveys/<%=survey.id%>/questions/<%=question.id%>/edit">Edit Question</a></div>
   <br>
-  <div class="add_new_choice">
-    <div class="choice_<%= question.id %> choice">
-
-    </div>
-  </div>
-  <div>
-    <a class="add_choice" href="/surveys/<%= survey.id %>/questions/<%= question.id %>/choices/new">Add Possible Answer</a>
-  </div>
   <div><a href="/surveys/<%= survey.id %>">Back to Survey</a></div>
 </div>

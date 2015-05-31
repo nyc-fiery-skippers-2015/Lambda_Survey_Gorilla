@@ -219,7 +219,6 @@ header a:hover {
 .question-link {
     padding: 5px;
     text-decoration: underline;
-
 }
 
 .question-link a,
@@ -227,7 +226,7 @@ header a:hover {
     font-size: 1.4em;
     text-decoration: none;
     margin-bottom: 15px;
-
+    color: black;
 }
 
 .single-survey h1:before, .single-survey h1:after {
@@ -270,6 +269,15 @@ header a:hover {
 /*.all_questions form label:after {
     content: ":";
 }*/
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
 
 
 
