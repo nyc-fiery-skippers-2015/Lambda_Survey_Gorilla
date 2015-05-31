@@ -33,8 +33,8 @@ var addQuestion = function(event){
       dataType: 'json'
   }).done(function(response){
     var link = '/surveys/' + surveyId + '/questions/' + response.id
-    $('<a href="'+ link + '">'+ response.body + '</a>').appendTo($('.all_questions'));
-    var link2 = '<div><a class="add_choice" href="'+ '/surveys/' + surveyId + '/questions/' + response.id + '/choices/new' + '">'+ 'Add new Answer' + '</a></div>'
+    $('<div class="question-link"><a href="'+ link + '">'+ response.body + '</a></div>').appendTo($('.all_questions'));
+    var link2 = '<div><a class="add_choice btn-2 btn:hover" href="'+ '/surveys/' + surveyId + '/questions/' + response.id + '/choices/new' + '">'+ 'Add new Answer' + '</a></div>'
     $('.all_questions').append(link2)
     $('.new_question').toggle(false);
     $('.add_question').toggle(true);
@@ -46,12 +46,12 @@ var addQuestion = function(event){
 var getNewChoice = function(event){
   event.preventDefault();
   var $target = $(event.target)
-  var parentDiv = $target.closest('.all_questions')
+  var $parentDiv = $($target.parent())
   var controller_route = $target.attr('href')
   $.ajax({
     url: controller_route,
   }).done(function(response){
-    $(parentDiv).append(response)
+    $($parentDiv).prepend(response)
     $('.add_choice').toggle(false)
   }).fail(function(error){
     console.log(error);
@@ -61,7 +61,8 @@ var getNewChoice = function(event){
 var addChoice = function(event){
   event.preventDefault();
   var $target = $(event.target);
-  var parentDiv = $target.closest('.all_questions')
+  var parentDiv = $target.closest('.single_question')
+  var questionId = parentDiv.attr('id')
   var link = parentDiv.attr('href')
   $.ajax({
       method: 'post',
@@ -70,8 +71,9 @@ var addChoice = function(event){
       dataType: 'json'
   }).done(function(response){
     var link = $target.attr('action') + '/' + response.id
-    // var selectDiv = '.all_choices_' + questionId
-    $('<div><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($(parentDiv));
+    var divSelect = '#all_choices_' + questionId
+    console.log(divSelect)
+    $('<div class="single-choice"><a href="'+ link + '">'+ response.choice + '</a></div>').appendTo($(divSelect));
     $('.new_choice').toggle(false);
     $('.add_choice').toggle(true);
   }).fail(function(error){
