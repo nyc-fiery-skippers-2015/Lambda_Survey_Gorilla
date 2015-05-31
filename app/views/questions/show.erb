@@ -1,5 +1,6 @@
 <div class='single_question' id='<%= question.id %>'>
-  <div class='question-body'>Question: <%=question.body%></div>
+  <div class='question-body spacing'>Question: <%=question.body%></div>
+  <br>
   <div class="question-block" id="<%=question.id%>">
     <div>
       <% if choices %>
@@ -7,6 +8,7 @@
           <%= erb :'/choices/_show-single-choices', locals:{choice: c, survey: survey, question: question} %>
         <% end %>
       <% end %>
+      <br>
     </div>
   </div>
   <div><a class="edit-question" href ="/surveys/<%=survey.id%>/questions/<%=question.id%>/edit">Edit Question</a></div>

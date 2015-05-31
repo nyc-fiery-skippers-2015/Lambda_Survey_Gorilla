@@ -163,6 +163,15 @@ header a:hover {
     padding: 20px;
 }
 
+.link-fix {
+    color: black;
+    font-size: 19px;
+}
+
+.spacing {
+  padding-top: 30px;
+}
+
 .move {
     padding-bottom: 50px;
 }

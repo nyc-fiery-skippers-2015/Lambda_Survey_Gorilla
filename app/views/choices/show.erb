@@ -1,5 +1,8 @@
-<div class='single_choice' id='<%= choice.id %>'>
-  <div class='choice-body'>Choice: <%=choice.choice%></div>
-  <div><a class="edit-choice" href ="/surveys/<%=survey.id%>/questions/<%=question.id%>/choices/<%=choice.id%>/edit">Edit Choice</a></div>
-  <div><a href="/surveys/<%= survey.id %>">Back to Survey</a></div>
+<div>
+  <div class='single_choice' id='<%= choice.id %>'>
+    <div class='choice-body spacing'>Choice: <%=choice.choice%></div>
+    <div class ='spacing'><a class="edit-choice link-fix" href ="/surveys/<%=survey.id%>/questions/<%=question.id%>/choices/<%=choice.id%>/edit">Edit Choice</a></div>
+    <br>
+    <div><a class ='link-fix' href="/surveys/<%= survey.id %>">Back to Survey</a></div>
+  </div>
 </div>
