@@ -1,5 +1,5 @@
 <div class='single-survey' id="<%= survey.id %>">
-  <h1> <%= survey.title %> </h1>
+  <h1 class ='move'> <%= survey.title %> </h1>
   <div class="all_questions">
     <div >
       <% if survey.questions %>
@@ -13,9 +13,10 @@
   <div class='question'>
 
   </div>
-  <div >
+  <div>
     <a class="add_question" href="/surveys/<%= survey.id %>/questions/new">Add new question</a>
   </div>
+  <br>
   <br>
   <div>
     <a class="edit_button" href="/surveys/<%= survey.id %>/edit">Edit Survey Title</a>

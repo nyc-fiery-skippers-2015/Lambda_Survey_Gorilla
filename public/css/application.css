@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
-    font-family: Vollkorn; line-height: 160%;
+    font-family: "Cabin Condensed";
 }
 
 .inner-header,
@@ -121,12 +121,12 @@ header a:hover {
 }
 
 .all-surveys, .single-survey {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .all-surveys h1, .single-survey h1 {
-    margin-bottom: 40px;
     text-decoration: underline;
+    margin-bottom: -50px;
 }
 
 .all-surveys a {
@@ -135,6 +135,14 @@ header a:hover {
     padding: 8px;
     text-align: center;
     font-size: 1.2em;
+}
+
+.size {
+    font-size: 3em;
+}
+
+.fix-me {
+    padding-bottom: 80px;
 }
 
 .all-surveys a:hover {
@@ -153,6 +161,10 @@ header a:hover {
 .all_questions {
     margin-top: 20px;
     padding: 20px;
+}
+
+.move {
+    padding-bottom: 50px;
 }
 
 .all_questions ol {
@@ -277,14 +289,15 @@ a:hover {
   text-decoration: underline;
   color: white;
 }
+
 /*----------------------------------------footer*/
 
 footer {
     flex-direction: column;
     justify-content: center;
-
     background-color: #4477aa;
     height: 40px;
+    font-weight: bold;
 }
 
 .inner-footer {
