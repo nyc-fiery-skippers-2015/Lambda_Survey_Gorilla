@@ -32,7 +32,7 @@ put '/surveys/:id/questions/:question_id' do
   current_survey = Survey.find_by(id: params[:id])
   current_question = Question.find_by(id: params[:question_id])
   return [500, 'Invalid Question'] unless current_question
-  current_question.update(user_input)
+  current_question.update(params[:question])
   redirect "/surveys/#{current_survey.id}/questions/#{current_question.id}"
 end
 
