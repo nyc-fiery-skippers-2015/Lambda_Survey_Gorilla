@@ -2,10 +2,12 @@
   <div class='question-link'>
     <p><%= question.body %></p>
   </div>
+  <div class ='center'>
   <% if question.choices %>
       <% question.choices.each do |c|  %>
         <%= erb :'choices/_show_single_choices_take', locals: {choice: c, survey: survey, question: question}  %>
       <% end %>
   <% end %>
+</div>
   <br>
 </div>
