@@ -1,6 +1,6 @@
 <div class='single-question'>
-  <div>
-    <%= question.body %>
+  <div class='question-link'>
+    <p><%= question.body %></p>
   </div>
   <% if question.choices %>
       <% question.choices.each do |c|  %>

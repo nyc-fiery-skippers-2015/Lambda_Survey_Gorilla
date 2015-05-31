@@ -1,14 +1,15 @@
 <div class='single-survey' id="<%= survey.id %>">
-  <div> <%= survey.title %> </div>
+  <h1><%= survey.title %></h1>
   <div class="all_questions">
-    <div>
-      <form action="/surveys/<%= survey.id %>/submit" method="post">
+    <div >
+      <form  action="/surveys/<%= survey.id %>/submit" method="post">
         <% if survey.questions %>
           <% survey.questions.each do |q|  %>
             <%= erb :'questions/_show_single_questions_take', locals: {question: q, survey: survey}  %>
+
           <% end %>
         <% end %>
-        <input type="submit" value="Submit Survey"/>
+        <input class='btn-3 btn-3:hover' type="submit" value="Submit Survey"/>
       </form>
     </div>
   </div>
