@@ -1,6 +1,6 @@
 <div class='single_question' id='<%= question.id %>'>
-  <div>
-    <a href="/surveys/<%= survey.id %>/questions/<%= question.id %>"><%= question.body %></a>
+  <div class='question-link' >
+    <a  href="/surveys/<%= survey.id %>/questions/<%= question.id %>"><%= question.body %></a>
   </div>
   <div class="all_choices_<%=question.id%>">
     <% if question.choices %>
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div>
-    <a class="add_choice" href="/surveys/<%= survey.id %>/questions/<%= question.id %>/choices/new">Add new answer</a>
+    <a class="add_choice btn-2 btn:hover" href="/surveys/<%= survey.id %>/questions/<%= question.id %>/choices/new">Add new answer</a>
   </div>
   <br>
 </div>
