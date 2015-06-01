@@ -25,18 +25,18 @@ get '/users/:id/edit' do
 end
 
 post '/users' do
-  user_input = params[:user]
-  new_user = User.new(user_input)
+  # Dont use temporary variables.
+  # user_input = params[:user]
+  new_user = User.new(params[:user])
   return [500, "Invalid User"] unless new_user.save
   session[:user_id] = new_user.id
   redirect "/users/#{new_user.id}"
 end
 
 post '/login' do
-  user_input = params[:user]
-  cur_user = User.find_by(email: user_input[:email])
+  cur_user = User.find_by(email: user_params[:email])
   return [500, "User does not exist"] unless cur_user
-  if cur_user.authenticate(user_input[:password])
+  if cur_user.authenticate(user_params[:password])
     session[:user_id] = cur_user.id
     redirect "/users/#{cur_user.id}"
   else
@@ -47,14 +47,27 @@ end
 put '/users/:id' do
   cur_user = User.find_by(id: params[:id])
   return [500, "No User Found"] unless cur_user
-  cur_user.update(params[:user])
-  redirect "/users/#{cur_user.id}"
+  # What happens if this update fails?
+  if cur_user.update(params[:user])
+    redirect "/users/#{cur_user.id}"
+  else
+    # ... what happens here?
+  end
 end
 
 delete '/users/:id' do
+  # Can anyone delete anyone else?  Should they be able to?
+  # All of these update methods should check the session logged in user to validate
+  # that the user can actually update this object.
   cur_user = User.find_by(id: params[:id])
   return [500, "No User Found"] unless cur_user
   cur_user.destroy
   redirect '/'
+end
+
+private
+
+def user_params
+  params[:user]
 end
 

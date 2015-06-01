@@ -46,17 +46,17 @@ post '/surveys/:id/submit' do
   cur_survey = Survey.find_by(id: params[:id])
   user_input = params[:choice]
   current_user.surveys << cur_survey
-  # binding.pry
-  array_choices = []
-  user_input.each{|key, value| array_choices << Choice.where(choice: value, question_id: key)}
-  array_choices.flatten.each{|choice| current_user.choices << choice}
+
+  user_input.each do |key, value|
+    current_user.choices += Choice.where(choice: value, question_id: key)
+  end
   redirect "/surveys/#{cur_survey.id}/results"
 end
 
 put '/surveys/:id' do
   cur_survey = Survey.find_by(id: params[:id])
   return [500, 'sorry no matching survey could be found'] unless cur_survey
-  cur_survey.update(params[:survey])
+  cur_survey.update(params[:survey]) # If this fails??
   redirect "/surveys/#{cur_survey.id}"
 end
 
